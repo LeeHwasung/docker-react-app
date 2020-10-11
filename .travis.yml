@@ -12,5 +12,28 @@ before_install:
 script:
     - docker run -e CI=true hsdayfly/docker-react-app npm run test -- --coverage
 
-after_success:
-    - echo "Test success"
+# DockerReactApp-env.eba-raccpgwc.us-east-2.elasticbeanstalk.com
+# 애플리케이션 이름: docker-react-app
+# DockerReactApp-env
+# arn:aws:s3:::elasticbeanstalk-us-east-2-517519014369
+# elasticbeanstalk-us-east-2-517519014369
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker-react-app"
+    env: "DockerReactApp-env"
+    bucket_name: "elasticbeanstalk-us-east-2-517519014369"
+    bucket_path: "docker-react-app"
+    on:
+        branch: master
+
+access_key_id: $AWS_ACCESS_KEY
+secret_access_key: $AWS_SECRET_ACCESS_KEY
+
+
+# git add .
+# git commit -m "text message"
+# git push origin master
+# 액세스키 : AKIAXQ7UJPHQ3UZ2ZPID
+# 비밀액세스키 : SoBjKck8rMUaoP4VNf/nqPyDhtQDjLfad7ZShuhx
+                SoBjKck8rMUaoP4VNf/nqPyDhtQDjLfad7ZShuhx
